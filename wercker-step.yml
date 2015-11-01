@@ -27,3 +27,9 @@ properties:
   target:
     type: string
     required: false
+  passed_msg:
+    type: string
+    required: false
+  failed_msg:
+    type: string
+    required: false

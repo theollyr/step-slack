@@ -15,6 +15,8 @@ webhook first (see the Slack integrations page to set one up).
 builds or deploys.
 - `branch` (optional) If set, it will only notify on the given branch
 - `target` (optional) If set, during deploy it will only notify if deploy targets match
+- `passed_msg` (optional) Custom message for passed builds
+- `failed_msg` (optional) Custom message for failed builds
 
 
 # Example
