@@ -26,10 +26,21 @@ if [ -n "$DEPLOY" ]; then
   # its a deploy!
   export ACTION="deploy"
   export ACTION_URL=$WERCKER_DEPLOY_URL
+
+  if [ -n "$WERCKER_SLACK_NOTIFIER_TARGET" ]; then
+    if [ "$WERCKER_DEPLOYTARGET_NAME" != "$WERCKER_SLACK_NOTIFIER_TARGET" ]; then
+      info "The deploy target doesn't match the one specified for this step - skipping"
+      return 0
+    fi
+  fi
 else
   # its a build!
   export ACTION="build"
   export ACTION_URL=$WERCKER_BUILD_URL
+
+  if [ -n "$WERCKER_SLACK_NOTIFIER_TARGET" ]; then
+    warn "During build, the target parameter has no effect"
+  fi
 fi
 
 export MESSAGE="<$ACTION_URL|$ACTION> for $WERCKER_APPLICATION_NAME by $WERCKER_STARTED_BY has $WERCKER_RESULT on branch $WERCKER_GIT_BRANCH"
@@ -46,7 +57,7 @@ fi
 json="{"
 
 # channels are optional, dont send one if it wasnt specified
-if [ -n "$WERCKER_SLACK_NOTIFIER_CHANNEL" ]; then 
+if [ -n "$WERCKER_SLACK_NOTIFIER_CHANNEL" ]; then
     json=$json"\"channel\": \"#$WERCKER_SLACK_NOTIFIER_CHANNEL\","
 fi
 

@@ -14,6 +14,7 @@ webhook first (see the Slack integrations page to set one up).
 - `notify_on` (optional) If set to `failed`, it will only notify on failed
 builds or deploys.
 - `branch` (optional) If set, it will only notify on the given branch
+- `target` (optional) If set, during deploy it will only notify if deploy targets match
 
 
 # Example

@@ -24,3 +24,6 @@ properties:
   branch:
     type: string
     required: false
+  target:
+    type: string
+    required: false
