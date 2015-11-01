@@ -42,6 +42,11 @@ The MIT License (MIT)
 
 # Changelog
 
+## 1.3.1
+
+- added `target` option
+- added `passed_msg` and `failed_msg` options for custom messages
+
 ## 1.2.0
 
 - added `branch` option
